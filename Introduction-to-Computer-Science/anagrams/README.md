@@ -22,7 +22,7 @@ The project consists of two main files:
 
 ## Requirements
 
-Python 3.9 or newer.
+- Python 3.9 or newer.
 
 ## How to Run the Game
 
@@ -31,6 +31,7 @@ Open a terminal, navigate to the project directory:
 cd anagrams
 python3 main.py
 ```
+
 
 
 
