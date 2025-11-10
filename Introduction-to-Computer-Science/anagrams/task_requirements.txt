@@ -1,0 +1,19 @@
+Napisz program pozwalający użytkownikowi na grę w anagramy. Anagramy to słowa powstające przez zmianę kolejności liter bez zmiany ich liczby, np. anagramami słowa 'wrota' są m.in. 'warto' i 'towar'.
+
+Po uruchomieniu program powinien wczytać listę poprawnych słów z pliku slownik.txt (każde w oddzielnym wierszu) oraz wybrać te z nich, które mają co najmniej dwa inne anagramy na liście. Następnie program powinien wylosować jedno z tych słów i wypisać jego litery w kolejności alfabetycznej (zamienione na wielkie litery) wraz z zachętą do zgadywania anagramów. Zadaniem gracza jest odgadnięcie poprawnych słów złożonych z wypisanych liter.
+
+Program powinien w pętli prosić użytkownika o podanie słowa. Po jego wpisaniu użytkownik powinien być informowany o tym, czy
+- słowo nie jest złożone z wypisanych liter,
+- słowo jest złożone z wypisanych liter, ale jest niepoprawne (nie ma go na liście poprawnych słów),
+- słowo jest złożone z wypisanych liter i poprawne.
+Program powinien być przygotowany na to, że użytkownik może wpisać coś innego niż słowo. Gra kończy się, gdy użytkownik poda wszystkie poprawne słowa złożone z wypisanych liter.
+
+Plik z programem należy przesłać przez Moodle do 10 grudnia do godziny 23:59. Następnie rozwiązanie należy zaprezentować osobiście (w trakcie zajęć, konsultacji albo w innym terminie do ustalenia z prowadzącym). Wysyłka programu bez prezentacji nie daje punktów.
+
+Do zdobycia maksymalnie 6 pkt.:
+- wczytywanie pliku ze słowami i wybór słów mających co najmniej dwa inne anagramy: 1 pkt.
+- losowanie słowa i wypisanie jego liter: 1 pkt.
+- wczytywanie słów wpisywanych przez użytkownika i sprawdzanie, czy są złożone z wypisanych liter: 1,5 pkt.
+- sprawdzanie poprawności wpisywanych słów i kończenie działania po podaniu wszystkich: 1 pkt.
+- organizacja programu (podział na funkcje wykonujące poszczególne części, komentarze w kodzie): 1,5 pkt.
+- wysyłka w terminie 11-17 grudnia: −1 pkt., wysyłka po 17 grudnia: −2 pkt.
