@@ -9,12 +9,13 @@ A simple anagram game written in Python. The goal is to guess the correct form o
 ## Project Structure
 
 The project consists of two main files:
-### `main.py`
+
+### 1. `main.py`
 - The main entry point of the program.
 - Handles the path to the word file.
 - Starts the game.
 
-### `anagram_game.py`
+### 2. `anagram_game.py`
 - Processes data from the file.
 - Checks the correctness of guesses.
 - Handles the game mechanics (guessing or giving up).
@@ -25,11 +26,12 @@ Python 3.9 or newer.
 
 ## How to Run the Game
 
-Open a terminal, navigate to the project directory and run the game:
+Open a terminal, navigate to the project directory:
 ```bash
 cd anagrams
 python3 main.py
 ```
+
 
 
 
