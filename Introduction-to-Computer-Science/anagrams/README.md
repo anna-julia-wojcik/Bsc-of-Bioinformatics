@@ -3,14 +3,12 @@
 ## Project Description
 A simple anagram game written in Python. The goal is to guess the correct form of a shuffled word. The player can try to guess or give up, and the program checks the correctness of the guesses.
 
-## Task description
-[Uploading Task_info.txt…]()
+## Task description and requirements
+[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Introduction-to-Computer-Science/anagrams/task_requirements.txt)
 
 ## Project Structure
 
 The project consists of two main files:
-[Task_info.txt](https://github.com/user-attachments/files/23458901/Task_info.txt)
-
 ### `main.py`
 - The main entry point of the program.
 - Handles the path to the word file.
@@ -32,3 +30,4 @@ Python 3.9 or newer.
    
 3. Run the game:
    python3 main.py
+
