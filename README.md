@@ -6,6 +6,9 @@
 - Introduction to Computer Science
 
 ### Semester 2
+- Scientific Computations
+
+### Semester 3
 - Advanced Programming Techniques
 - Object Oriented Design and Programming
 
