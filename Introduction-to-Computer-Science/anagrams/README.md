@@ -27,8 +27,9 @@ Python 3.9 or newer.
 
 Open a terminal, navigate to the project directory and run the game:
 ```bash
-     cd anagrams
-     python3 main.py
-     ```
+cd anagrams
+python3 main.py
+```
+
 
 
