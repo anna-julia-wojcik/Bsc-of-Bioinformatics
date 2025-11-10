@@ -1,0 +1,198 @@
+Zadanie polega na napisaniu programu umożliwiającego grę w Mastermind. Z zasadami gry można się zapoznać np. tutaj:
+
+
+https://pl.wikipedia.org/wiki/Mastermind_(gra_planszowa)
+
+
+a zagrać można tutaj: 
+
+
+http://www.web-games-online.com/mastermind
+
+
+Należy zaimplementować uogólnienie gry Mastermind na sekwencje długości n, przy dostępnych k kolorach. Kolory będziemy reprezentować liczbami od 1 do k, odgadywane sekwencje zapisywać będziemy dzieląc kolory spacjami.
+
+
+Zadanie polega na zaimplementowaniu trzech modułów oraz ich połączeniu w dwa programy.
+
+
+Pierwszym modułem będzie moduł sędziego, który będzie jako argument przyjmował liczbę kolorów oraz sekwencję ukrytą, i będzie przyjmował od jednego z dwóch modułów odgadujących kolejne sekwencje "zapytań", i dla każdej z nich będzie zwracał liczbę pionków o właściwym kolorze i na właściwym miejscu, oraz liczbę pionków o właściwym kolorze, ale na niewłaściwym miejscu. Sugerowana implementacja to metoda check(). która będzie walidowała sekwencję, tj. przyjmowała liczbę kolorów, listę kodującą sekwencję ukrytą i listę kodującą zapytanie, oraz zwracała parę liczb: liczbę żetonów o właściwym kolorze i na właściwym miejscu oraz liczbę pionków o właściwym kolorze, ale na niewłaściwym miejscu.
+
+
+# judge.py
+
+def check(k: int, hidden: list[int], query: list[int]) -> tuple[int,int]
+
+
+Drugim modułem będzie automatyczny moduł grający z funkcjami, które jako argument będą przyjmowały liczby k oraz n, i będą generować ciąg zapytań do sędziego, kończąc w momencie odgadnięcia sekwencji. Minimalnym wymaganym poziomem "strategii" modułu grającego jest to, aby nie generował zapytań o sekwencje, które na podstawie poprzednich odpowiedzi wiemy, że są niemożliwe. "Mądrzejsze" funkcje grające będą wyżej punktowane. Sugestie dotyczące możliwych strategii prezentuje np. angielska Wikipedia.
+
+
+Trzecim modułem jest moduł umożliwiający użytkownikowi zagranie w Mastermind, poprzez komunikację z poziomu konsoli albo przy pomocy okienkowego interfejsu. Moduł powinien najpierw zapytać użytkownika o wartości k oraz n, następnie wygenerować losową sekwencję ukrytą, po czym przeprowadzić grę aż do momentu odgadnięcia sekwencji losowej przez użytkownika, lub do momentu kiedy użytkownik się podda. 
+
+W wersji konsolowej użytkownik poddanie się sygnalizuje naciśnięciem Ctrl-D (co oznacza zakończenie wczytywania ze standardowego wejścia). W sytuacji zwycięstwa użytkownika program powinien mu pogratulować odpowiednim komunikatem, wypisać liczbę zużytych ruchów i się zakończyć. W przypadku poddania się użytkownika, powinien wypisać komunikat wyrażający zawód, po czym powinien zdradzić ukrytą sekwencję. Jeżeli użytkownik wpisze napis, który nie jest poprawną sekwencją do odgadnięcia (zawiera kolory spoza zbioru, sekwencja jest niepoprawnej długości, użytkownik wprowadził pustą linijkę lub niepoprawny napis, itp.), program powinien wypisać komunikat o błędzie i zapytać użytkownika jeszcze raz. 
+
+W wersji okienkowej funkcjonalności te należy zrealizować w użyciem interfejsu graficznego (wymaga zapoznania się z odpowiednio biblioteką np. PyGtk), gdzie widoczne są kolejne zapytania w postaci tabelki prostokątnej. Np. w oknie możliwe jest klikanie w pionki w aktualnym wierszu, które zmienia ich kolor; po akceptacji użytkownika program udziela odpowiedzi i aktywuje odpowiednio kolejny wiersz do klikania. Tutaj można założyć, że maksymalna liczba zapytań użytkownika jest ustalona tak by uniknąć konieczności przesuwania tabelki z wierszami.
+
+
+Do wyboru dwie ścieżki:
+
+- algorytmiczna: zaawansowany moduł grający + interfejs konsolowy 
+
+- okienkowa: prosty moduł grający + interfejs okienkowy.
+
+
+Moduły te należy połączyć w dwa programy: pierwszy program przeprowadzi interaktywną grę według opisu powyżej, drugi program pobierze od użytkownika sekwencję ukrytą, a następnie przeprowadzi symulację odgadywania sekwencji ukrytej wypisując na ekran odpowiednie dane. Wymagane jest, aby oba programy korzystały z tego samego modułu sędziego. 
+
+
+W przypadku automatycznego programu grającego można założyć, że k oraz n są na tyle małe, żeby można było w pamięci trzymać zbiór wszystkich możliwych sekwencji (który będzie miał rozmiar k^n), jednak programy, które nie będą korzystały z tego założenia, będą oceniane wyżej. 
+
+
+Wymagany jest rozsądny podział programu na funkcje i bloki, rozsądna komunikacja między częściami programu też będzie podlegała ocenie. Można użyć klas, ale nie jest to oczekiwane.
+
+
+Przykłady użycia w wersji konsolowej: (wszystko za znakiem '>' jest wprowadzane przez użytkownika, reszta jest wypisywana przez program, nie jest wymagane stosowanie dokładnie takich komunikatów).
+
+
+$ python master_automat.py
+
+Podaj liczbę kolorów: 
+
+> 3
+
+Podaj długość sekwencji ukrytej: 
+
+> 4
+
+Podaj sekwencję ukrytą:
+
+> 1 2 1 3
+
+Symulowana gra:
+
+Zapytanie: 1 1 1 1
+
+Trafione miejsce: 2, trafiony kolor niewłaściwe miejsce: 0
+
+Zapytanie: 2 2 3 3
+
+Trafione miejsce: 2, trafiony kolor niewłaściwe miejsce: 0
+
+Zapytanie: 2 1 3 1
+
+Trafione miejsce: 0, trafiony kolor niewłaściwe miejsce: 4
+
+Zapytanie: 1 2 1 3
+
+Trafione miejsce: 4, trafiony kolor niewłaściwe miejsce: 0
+
+KONIEC GRY, sekwencja odgadnięta w 4 ruchach
+
+
+============================
+
+
+$ python master_graj.py
+
+Podaj liczbę kolorów: 
+
+> 3
+
+Podaj długość sekwencji ukrytej: 
+
+> 4
+
+Podaj zapytanie (1):
+
+> 1 1 1 1
+
+Trafione miejsce: 2, trafiony kolor niewłaściwe miejsce: 0
+
+Podaj zapytanie (2): 
+
+> Ala ma kota
+
+Niewłaściwa sekwencja na wejściu, spróbuj jeszcze raz
+
+Podaj zapytanie (2):
+
+> 1 17 2 3
+
+Niewłaściwa sekwencja na wejściu, spróbuj jeszcze raz
+
+Podaj zapytanie (2):
+
+> 1 1 1
+
+Niewłaściwa sekwencja na wejściu, spróbuj jeszcze raz
+
+Podaj zapytanie (2):
+
+> 2 2 3 3
+
+Trafione miejsce: 2, trafiony kolor niewłaściwe miejsce: 0
+
+Podaj zapytanie (3): 
+
+> 2 1 3 1
+
+Trafione miejsce: 0, trafiony kolor niewłaściwe miejsce: 4
+
+Podaj zapytanie (4): 
+
+> 1 2 1 3
+
+Trafione miejsce: 4, trafiony kolor niewłaściwe miejsce: 0
+
+KONIEC GRY, sekwencja odgadnięta w 4 ruchach
+
+
+============================
+
+
+
+$ python master_graj.py
+
+Podaj liczbę kolorów: 
+
+> 100
+
+Podaj długość sekwencji ukrytej: 
+
+> 4
+
+Podaj zapytanie (1):
+
+> 100 30 20 67
+
+Trafione miejsce: 0, trafiony kolor niewłaściwe miejsce: 0
+
+Podaj zapytanie (2):
+
+> (Ctrl-D) <- naciśnięte ctrl+D a nie wpisany napis "Ctrl-D"
+
+Żałuję, że się poddajesz! Prawdziwa sekwencja ukryta była taka: 32 12 12 1
+
+
+Cennik i zasady zaliczania:
+
+1. Do zdobycia od 0 do 15 pkt. + 3 pkt. bonus za wysłanie programu do ostatniego dnia zajęć dydaktycznych semestru zimowego tj. 24 stycznia 2025, 23:55. Zaliczenie następuje po wysłaniu i osobistej prezentacji wysłanego rozwiązania przed prowadzącym zajęcia. 
+
+2. Za prosty moduł grający z minimalnymi wymaganiami tj. nie ma powtórzeń zapytań + konsolowy interfejs: maks. 8 pkt. +3 bonus jw.
+
+3. Za moduł grający sprawdzający/generujący wszystkie warianty w obliczeniach + konsolowy interfejs: maks. 12 pkt. +3 bonus jw.
+
+4. Brak komentarzy typu doc-string opisujących funkcje: -3 pkt.
+
+5. Obecność smelly comments: -3 pkt.
+
+6. Brak README (opis dla użytkownika, opcje, jak uruchamiać itp.): -2 pkt.
+
+7. Brak dokumentacji rozwiązania (opisu użytych algorytmów): -3 pkt.
+
+8. Brak jednego modułu: -5 pkt.
+
+
+Wysłanie rozwiązania i zaprezentowanie go w terminie bazowym jest warunkiem koniecznym, aczkolwiek niewystarczającym, by otrzymać propozycję oceny w terminie zerowym. By uzyskać ocenę w pierwszym terminie, wysyłka musi być do końca pierwszej sesji, a prezentacja musi odbyć się niezwłocznie po tej wysyłce. Ostateczny termin wysyłki to koniec sesji poprawkowej.
+
+
+Oryginalny autor zadania mind-mistrz M. Startek, adaptacja w 2024/25 P.G & A.J.
