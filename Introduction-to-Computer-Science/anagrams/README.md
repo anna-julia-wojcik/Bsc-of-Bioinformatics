@@ -25,9 +25,10 @@ Python 3.9 or newer.
 
 ## How to Run the Game
 
-1. Open a terminal and navigate to the project directory:
-   cd anagrams
-   
-3. Run the game:
-   python3 main.py
+Open a terminal, navigate to the project directory and run the game:
+```bash
+     cd anagrams
+     python3 main.py
+     ```
+
 
