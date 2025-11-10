@@ -6,13 +6,13 @@
 - Introduction to Computer Science
 
 ### Semester 2
-- Advances Programming Techniques
+- Advanced Programming Techniques
 - Object Oriented Design and Programming
 
 ## 📂 About the Content
 
 - Each project folder contains **my own solutions**.  
-- Individual README files include additional information such as **score/grade** (if relevant), **commands to run the project**, and a short description.  
+- Individual README files include additional information such as **score** (if relevant), **commands to run the project**, and a short description.  
 - All original content belongs to the **course authors**.  
 
 ## ✉️ Contact
