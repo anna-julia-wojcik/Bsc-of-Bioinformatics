@@ -1,5 +1,6 @@
 import random
 
+
 def import_data(source: str) -> list[str]:
     """
     This function reads the file line to line, and strips every line.
@@ -16,6 +17,7 @@ def import_data(source: str) -> list[str]:
     file.close()
 
     return data_set
+
 
 def selection(data_set: list[str]) -> dict[str, list[str]]:
     """
@@ -38,6 +40,7 @@ def selection(data_set: list[str]) -> dict[str, list[str]]:
             dict_of_sorted[data_set[i].upper()] = letters
 
     return dict_of_sorted
+
 
 def get_valid_guess(word_letters: list[str], anagrams_list: list[str]) -> str:
     """
@@ -78,6 +81,7 @@ def get_valid_guess(word_letters: list[str], anagrams_list: list[str]) -> str:
             print(f"\nSuch a shame you gave up! Remaining anagrams were: {anagrams_list}")
             raise SystemExit
 
+
 def start_game(data_source: str) -> None:
     """
     Starts the anagram guessing game using words from the given data source.
@@ -104,3 +108,4 @@ def start_game(data_source: str) -> None:
         anagrams_list.remove(guess)
 
     print("\nCongrats! You guessed all the anagrams!")
+
