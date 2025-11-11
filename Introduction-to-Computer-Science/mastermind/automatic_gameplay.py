@@ -2,6 +2,7 @@ import judge
 import itertools
 from typing import Generator
 
+
 def making_first_guess(n: int) -> list[int]:
     """
     This function creates the first, most optimal guess for the game in order to provide inital data for minimax alogirthm.
@@ -26,6 +27,7 @@ def making_first_guess(n: int) -> list[int]:
 
     return guess
 
+
 def is_new_guess_valid(new_guess: list[int], previous_guesses: list[list[int]], feedbacks: list[tuple[int, int]]) -> bool:
     """
     This function checks, if the new guess feedback is consistent to previous feedbacks
@@ -43,6 +45,7 @@ def is_new_guess_valid(new_guess: list[int], previous_guesses: list[list[int]], 
         if judge.check(old_guess, new_guess) != feedback:
             return False
     return True
+
 
 def generate_valid_guesses(possible_values: list[int], length: int, previous_guesses: list[list[int]],
                               feedbacks: list[tuple[int, int]], limit: int = None) -> Generator[list[int], None, None]:
@@ -73,6 +76,7 @@ def generate_valid_guesses(possible_values: list[int], length: int, previous_gue
             # If limits exists and counter gets bigger than the limit, the generator stops
             if limit and count >= limit:
                 break
+
 
 def minimax_guess(k: int, n: int, previous_guesses: list[list[int]], feedbacks: list[tuple[int, int]]) -> list[int]:
     """
@@ -119,6 +123,7 @@ def minimax_guess(k: int, n: int, previous_guesses: list[list[int]], feedbacks: 
 
     return best_guess
 
+
 def players_hidden_sequence() -> list[int]:
     """
     This function requests hidden sequence from the player and checks if it's correct. If it's incorrect, it prints
@@ -146,6 +151,7 @@ def players_hidden_sequence() -> list[int]:
         if valid_sequence:
             return list(map(int, hidden_sequence))
 
+            
 def start_automatic_gameplay():
     """
     This function is the main game module that uses the previous functions. The game loop continues until the
@@ -185,5 +191,6 @@ def start_automatic_gameplay():
             guess = minimax_guess(k, n, previous_guesses, feedbacks)
             previous_guesses.append(guess)
             moves += 1
+
 
             print(f"\nMy {moves} guess is: {guess}")
