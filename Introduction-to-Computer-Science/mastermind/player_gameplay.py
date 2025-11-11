@@ -1,6 +1,7 @@
 import judge
 import random
 
+
 def sequence_randomizer(k: int, n: int) -> list[int]:
     """
     This function randomizes a list of integers in range between 1 and the biggest colour (given by the player)
@@ -17,6 +18,7 @@ def sequence_randomizer(k: int, n: int) -> list[int]:
         hidden_sequence.append(random.randint(1, k))
 
     return hidden_sequence
+
 
 def player_guess(k: int, n: int) -> list[int]:
     """
@@ -54,6 +56,7 @@ def player_guess(k: int, n: int) -> list[int]:
 
         if valid_guess:
             return list(map(int, guess))
+
 
 def start_player_gameplay():
     """
@@ -96,3 +99,4 @@ def start_player_gameplay():
               "wanna try again.")
 
         print("\nThe sequence you were supposed to guess was:", " ".join(map(str, hidden_sequence)))
+
