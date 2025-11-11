@@ -1,6 +1,7 @@
 import player_gameplay
 import automatic_gameplay
 
+
 def main():
     """
     This function allows the player to select the game module they want to run and checks the correctness of
@@ -30,4 +31,5 @@ def main():
             print("Incorrect number. Please enter 1 or 2.")
 
 if __name__ == "__main__":
+
     main()
