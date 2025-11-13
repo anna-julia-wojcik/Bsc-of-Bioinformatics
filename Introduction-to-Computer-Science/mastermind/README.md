@@ -18,7 +18,7 @@ The main entry point of the program. Handles the selection of the gameplay mode:
 - **Automatic mode** (computer guesses the sequence).  
 - **Player mode** (player guesses the sequence).
 
-### 2. `ai_gameplay.py`
+### 2. `automatic_gameplay.py`
 - Generates the first guess.  
 - Checks the correctness of guesses.  
 - Minimax algorithm to select the best move.
@@ -42,4 +42,5 @@ The main entry point of the program. Handles the selection of the gameplay mode:
    - Select the gameplay mode:
      - `1` – Automatic Gameplay (computer guesses the sequence)  
      - `2` – Player Gameplay (player guesses the sequence)
+
 
