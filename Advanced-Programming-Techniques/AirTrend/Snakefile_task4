@@ -1,0 +1,41 @@
+configfile: "config/task4.yaml"
+
+years = config["years"]
+
+rule all:
+    input:
+        "results/report/raport_task4.md"
+
+# Raport końcowy
+rule report_task4:
+    input:
+        # expand stworzy listę plików dla wszystkich lat z configu
+        pm25 = expand("results/pm25/{year}/exceedance_days.csv", year=years),
+        lit = expand("results/literature/{year}/pubmed_papers.csv", year=years),
+        conf = "config/task4.yaml"
+    output:
+        rep = "results/report/raport_task4.md"
+    script:
+        "src/report/create_report.py"
+
+# Analiza przekroczeń i średnich dziennych
+rule pm25_year:
+    output:
+        exc = "results/pm25/{year}/exceedance_days.csv",
+        daily = "results/pm25/{year}/daily_means.csv"
+    params:
+        conf_path = "config/task4.yaml"
+    retries: 3
+    script:
+        "src/pm25/project3_main.py"
+
+# Artykułu z pubmedu
+rule pubmed_year:
+    output:
+        papers = "results/literature/{year}/pubmed_papers.csv",
+        summary = "results/literature/{year}/summary_by_year.csv",
+        journals = "results/literature/{year}/top_journals.csv"
+    params:
+        conf_path = "config/task4.yaml"
+    script:
+        "src/literature/pubmed_fetch.py"
