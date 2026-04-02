@@ -1,4 +1,4 @@
-# Projekt nr 4 na przedmiot: Zaawansowane techniki programowania dla bioinformatyków
+# AirTrend
 
 Projekt stanowi zautomatyzowany potok przetwarzania danych (pipeline) zarządzany przez narzędzie Snakemake. <br>
 Integruje on analizę danych środowiskowych (stężenia PM2.5 z GIOŚ) z analizą bibliometryczną literatury medycznej (PubMed) w celu zbadania korelacji między jakością powietrza a trendami w publikacjach naukowych w latach zdefiniowanych w konfiguracji (np. 2019, 2024).
