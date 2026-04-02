@@ -2,10 +2,9 @@
 
 | Project Name                  | Grade          |
 |-------------------------------|----------------|
-| Pascal's Triangle             | 7,00 / 7,00    |
-| Filters                       | 9,00 / 9,00    |
+| Anagrams                      | 6,00 / 6,00    |
+| Mastermind                    | 18,00 / 18,00  |
 
 ## Course authors:
-- dr hab. Paweł Górecki prof. ucz.
-- dr Aleksander Jankowski
-- Maria Bochenek
+- dr Janusz Jabłonowski, prof. ucz.
+- dr Dorota Celińska-Kopczyńska
