@@ -6,6 +6,5 @@
 | Mastermind                    | 18,00 / 18,00  |
 
 ## Course authors:
-- dr hab. Paweł Górecki prof. ucz.
-- dr Aleksander Jankowski
-
+- dr Janusz Jabłonowski, prof. ucz.
+- dr Dorota Celińska-Kopczyńska
