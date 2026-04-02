@@ -4,7 +4,7 @@
 A simple program written in Java that calculates and prints Pascal's Triangle up to a user-specified number of levels. The program validates user input and includes safeguards to detect and handle integer overflows during calculations.
 
 ## Task description and requirements
-[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Object-Oriented-Design-and-Programming/pascalTriangle/task_requirements.txt)
+[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Object-oriented-Design-and-Programming/pascalTriangle/task_requirements.txt)
 
 
 ## Project Structure
