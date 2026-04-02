@@ -12,6 +12,10 @@
 - Advanced Programming Techniques
 - Object Oriented Design and Programming
 
+### Semester 4
+- Algorithms and Data Structures
+- Statistical Data Analysis
+
 ## 📂 About the Content
 
 - Each project folder contains **my own solutions**.  
