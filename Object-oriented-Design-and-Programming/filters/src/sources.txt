@@ -1,0 +1,14 @@
+./Main.java
+./filters/Test.java
+./filters/generators/SequentialGenerator.java
+./filters/generators/RandomGenerator.java
+./filters/factories/SieveFactory.java
+./filters/factories/ShufflerFactory.java
+./filters/factories/HolderFactory.java
+./filters/factories/SorterFactory.java
+./filters/components/Sieve.java
+./filters/components/Holder.java
+./filters/components/Shuffler.java
+./filters/components/Sorter.java
+./filters/core/AbstractFilter.java
+./filters/core/FilterNode.java
