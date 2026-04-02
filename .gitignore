@@ -209,3 +209,4 @@ __marimo__/
 # Pycharm
 .idea/
 *.iml
+*Zone.Identifier
