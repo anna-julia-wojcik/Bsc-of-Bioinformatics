@@ -1,0 +1,88 @@
+Zaprojektuj i zaimplementuj hierarchię klas realizujących sekwencje filtrów. Przez filtry rozumiemy w tym zadaniu obiekty, które:
+
+zwykle przechowują pojedynczą wartość typu int,
+pamiętają kolejny filtr znajdujący się w sekwencji bezpośrednio po nich (lub null, jeśli takiego nie ma),
+dostawszy liczbę typu int potrafią (jeśli tak zadecydują) przekazać ją do następnego w sekwencji filtru. Mogą przy tym zmienić zarówno wartość zapamiętaną w sobie jak i tę przekazywaną dalej.
+potrafią się wypisać, a potem poprosić o to samo kolejny w sekwencji filtr.
+Filtry są kilku rodzajów:
+
+Generatory: ignorują otrzymywane liczby i tylko generują nowe (przekazując do kolejnego filtru). Generatory posiadają stan, ale nie wypisują go przy wywołaniu metody wypisz (tylko przekazują żądanie dalej).
+Producenci: otrzymawszy liczbę tworzą nowy (zwykły) filtr na podstawie tej wartości oraz podpinają się w sekwencji za nim. Producenci nie wypisują swojej wartości.
+Pozostałe (zwykłe) filtry.
+Twój system filtrów powinien zawierać wszystkie klasy podane w załączonym przykładzie (i zapewne jakieś nadklasy abstrakcyjne lub interfejsy).
+
+Opis klas i interfejsów z przykładu:
+
+FiltrWart: interfejs opisujący wszystkie filtry. Zawiera metody wstaw i wypisz.
+GenKol: generator generujący kolejne liczby całkowite, zaczynając od podanej jako parametr konstruktora.
+GenLos: generator generujący liczby losowe z zakresu od 0 do liczby podanej w konstruktorze.
+Trzymacz: filtr zwykły, utworzony z liczbą trzyma ją bez zmian, a otrzymane liczby przesyła do następnego filtru w sekwencji.
+Mieszacz: filtr zwykły, otrzymawszy liczbę decyduje z prawdopodobieństwem 50%, czy przekazać ją dalej, czy zamienić z przechowywaną liczbą i dalej przesłać tę dotąd przechowywaną.
+Sito: filtr zwykły, utworzony z liczbą trzyma ją cały czas, zaś otrzymawszy kolejną liczbę przesyła ją dalej tylko wtedy, gdy nie dzieli się ona przez tę zapamiętaną.
+Sortowacz: filtr zwykły, otrzymawszy liczbę porównuje ją z tą posiadaną i zostawia sobie mniejszą, a większą przesyła dalej (jak obie są równe, to jedną zachowuje a drugą przesyła dalej).
+ProducentX: producent, otrzymawszy liczbę tworzy filtr zwykły rodzaju X z otrzymaną liczbą, wstawia siebie za nim, a jako wynik wstawienia przekazuje ten nowy obiekt. X oznacza tu jedno z: Trzymacz, Mieszacz, Sito, Sortowacz.
+Do losowania należy użyć klasy Random, co wymaga umieszczenia na początku plików z losowaniem deklaracji:
+   import java.util.Random;
+Samo losowanie realizują metody:
+  los.nextInt(wart)    // wartość całkowita z zakresu 0..wart-1
+  los.nextBoolean()  // wartość logiczna
+gdzie los to obiekt klasy Random.
+
+Aby można było wstawiać do sekwencji filtrów nowe filtry przed już istniejące, wysyłanie liczby do kolejnego filtru musi mieć postać
+     nast = nast.wstaw(wart);
+a nie samo:
+     nast.wstaw(wart);
+
+Wszystkie filtry muszą być w pakiecie filtry.
+
+W pakiecie powinna też być klasa główna, o poniższej treści:
+
+package filtry;
+
+public class Test {
+   
+  public void test(int ile, FiltrWart g){
+    for(int i=1; i<=ile; i++)
+        g.wstaw(0);  // Dla generatora wartość argumentu wstaw nie ma znaczenia
+    g.wypisz(); 
+  }
+ 
+  public static void test(){
+   
+    final int Max = 10;
+    Test t = new Test();
+
+    System.out.println("Wypisanie kolejnych liczb 0.." + (Max-1) + "");
+    t.test(Max, new GenKol(0, new ProducentTrzymaczy()));
+  
+    System.out.println("Wypisanie dość losowej permutacji liczb 0.. " + (Max-1) + "");
+    t.test(Max, new GenKol(0, new ProducentMieszaczy()));
+  
+    System.out.println("SitoEratostenesa dla liczb 0..100");
+    t.test(100-1, new GenKol(2, new ProducentSit()));
+
+    System.out.println("Sortowanie losowych liczb z zakresu 0..100");
+    t.test(Max, new GenLos(100, new ProducentSortowaczy()));   
+   
+  }
+
+  public static void main(String[] args) {
+
+      test();
+
+  }
+
+}
+
+Wynikiem działania powyższego programu powinno być wypisanie:
+
+Wypisanie kolejnych liczb 0..9
+0 1 2 3 4 5 6 7 8 9
+Wypisanie dość losowej permutacji liczb 0.. 9
+8 7 9 6 2 3 5 0 1 4
+SitoEratostenesa dla liczb 0..100
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+Sortowanie losowych liczb z zakresu 0..100
+3 7 31 32 43 66 75 92 93 98
+
+Jako rozwiązanie należy przesłać jedynie spakowane archiwum zip z wszystkimi plikami *.java z katalogu filtry (poza Test.java podanym powyżej).
