@@ -7,7 +7,7 @@ A Java program implementing a dynamic sequence of filters (based on the Pipes an
 - **Components (Regular Filters):** Store, evaluate, swap, or drop numbers to achieve specific mathematical results (e.g., Sieve of Eratosthenes, sorting, or shuffling).
 
 ## Task description and requirements
-[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Object-oriented-Design-and-Programming/Filters/task_requirements.txt)
+[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Object-oriented-Design-and-Programming/filters/task_requirements.txt)
 
 ## Project Structure
 
