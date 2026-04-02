@@ -2,8 +2,8 @@
 
 | Small Project Name            | Grade          |
 |-------------------------------|----------------|
-| trees                         |                |
-| greedy-programming            |                |
+| Trees                         |                |
+| Greedy Programming            |                |
 
 *Note: All projects listed here were completed in pairs as collaborative assignments. Detailed information about my individual contributions is included inside the documentation of each respective project.*
 
