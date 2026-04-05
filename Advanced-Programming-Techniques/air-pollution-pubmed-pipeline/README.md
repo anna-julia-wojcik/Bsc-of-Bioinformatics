@@ -242,7 +242,7 @@ The script is called by Snakemake once, after all PM2.5 and PubMed analyses for 
 - sample date values in various formats:
   - full date: `"2024 May 12"`
   - year only: `"2019"`
-  - invalid values: `"Brak"`, `None`
+  - invalid values: `None`
 
 ### Output:
 - result of the `extract_year` function as a string representing the publication year
