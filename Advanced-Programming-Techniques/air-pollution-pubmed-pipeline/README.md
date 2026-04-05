@@ -3,6 +3,9 @@
 The project is an automated data processing pipeline managed by the Snakemake tool.
 It integrates environmental data analysis (PM2.5 concentrations from GIOŚ) with bibliometric analysis of medical literature (PubMed) in order to examine the correlation between air quality and trends in scientific publications in the years defined in the configuration (e.g., 2019, 2024).
 
+## Task description and requirements
+[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Advanced-Programming-Techniques/air-pollution-pubmed-pipeline/task_requirements.txt)
+
 ## Project Stages
 
 - Workflow automation using Snakemake.
