@@ -1,7 +1,0 @@
-years: [2019, 2024]
-cities: ["Warszawa", "Katowice"]
-
-pubmed:
-  query: "PM2.5 Poland"
-  email: "a.wojcik55@student.uw.edu.pl"
-  max_results: 20

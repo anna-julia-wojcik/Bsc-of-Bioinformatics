@@ -1,0 +1,112 @@
+Projekt 4
+Zbuduj pipeline uruchamiany przez Snakemake, który łączy:
+1) obliczenia/analitykę stężeń PM2.5 (korzystając z kodu już zrobionego w Mały Projekt 1/Mały Projekt 3),
+2) automatyczny mini-przegląd literatury (PubMed) dla wskazanych lat z użyciem Biopython (Bio.Entrez),
+3) raport końcowy zestawiający wyniki PM2.5 i trendy w publikacjach.
+
+Kluczowy wymóg: pipeline ma być „incremental” i nie przeliczać rzeczy ponownie, jeśli rok już był policzony (np. 2024 występuje w wielu uruchomieniach).
+
+Wejście użytkownika
+Użytkownik podaje listę lat w pliku konfiguracyjnym, np. config/task4.yaml:
+
+years: [2021, 2024] (przykład uruchomienia 1)
+później: years: [2019, 2024] (przykład uruchomienia 2)
+Dodatkowo w configu są:
+- miasta (np. Warszawa, Katowice – zgodnie z projektem),
+- parametry obliczeń/normalizacji (jeśli są wymagane przez istniejący kod),
+- parametry PubMed (zapytania + email + limit wyników).
+
+Założenia (co już istnieje z poprzednich małych projektów 1–3)
+Repo zawiera moduły/ funkcje do:
+wczytania i czyszczenia danych PM2.5,
+obliczenia metryk (np. średnie dobowe, dni z przekroczeniem normy),
+wizualizacji/raportowania (opcjonalnie).
+Możesz ich używać „jak biblioteki”, tzn. Snakemake ma jedynie je wywołać.
+Repo ma (lub potrafi stworzyć) surowe dane, ale Task 4 nie zmienia logiki liczenia – tylko ją odpala.
+Wyniki (artefakty)
+Dla każdego roku Y pipeline tworzy dwie niezależne gałęzie wyników:
+
+A) PM2.5:
+- results/pm25/{Y}/exceedance_days.csv (lub analogiczny plik z Twojego projektu)
+- results/pm25/{Y}/daily_means.csv (jeśli jest w projekcie)
+- opcjonalnie wykresy: results/pm25/{Y}/figures/*.png
+
+B) Literatura:
+- results/literature/{Y}/pubmed_papers.csv (PMID, tytuł, rok, journal, autorzy; abstrakt opcjonalnie)
+- results/literature/{Y}/summary_by_year.csv (dla zapytania – liczba publikacji per rok, min. do wykresu)
+- results/literature/{Y}/top_journals.csv (np. top 10)
+- opcjonalnie wykres: results/literature/{Y}/papers_per_year.png
+
+Całość:
+- results/report_task4.md (lub HTML/notebook) – raport zbiorczy dla lat z configu.
+
+Wymagana funkcjonalność Biopython/PubMed
+Zaimplementuj skrypt src/literature/pubmed_fetch.py, który:
+1) przyjmuje argumenty: --year Y, --config config/task4.yaml,
+2) wykonuje wyszukiwanie PubMed (Entrez.esearch) dla zapytań z configu ograniczonych do danego roku (np. filtrem dat),
+3) pobiera metadane (Entrez.esummary lub efetch),
+4) zapisuje results/literature/{Y}/pubmed_papers.csv,
+5) generuje agregacje (summary_by_year, top_journals) dla tego roku.
+
+W configu wymagane jest entrez_email (dobre praktyki NCBI).
+
+Integracja z wynikami PM2.5
+Stwórz raport (markdown lub notebook) np. results/report_task4.md, który zawiera:
+- krótkie podsumowanie wyników PM2.5 z istniejących artefaktów (np. tabelka przekroczeń per rok/miasto),
+- sekcję “Literatura”:
+- ile publikacji znaleziono dla każdego zapytania,
+- trend liczby publikacji w czasie,
+- top czasopisma,
+- kilka przykładowych tytułów (max 5) jako ilustracja.
+
+Snakemake: struktura i „incrementalność”
+Dodaj Snakefile_task4 (albo rozbuduj istniejący Snakefile) tak, aby:
+
+1) rule pm25_year
+- uruchamia istniejący kod z małych projektów 1/3 dla danego roku Y
+- tworzy results/pm25/{Y}/...
+
+2) rule pubmed_year
+- uruchamia pubmed_fetch.py --year {Y}
+- tworzy results/literature/{Y}/...
+
+3) rule report_task4
+- zbiera wyniki tylko dla lat wskazanych w configu
+- składa raport results/report_task4.md
+
+Wymóg kluczowy: „2024 nie przeliczamy drugi raz”
+Snakemake ma naturalnie zapewnić, że:
+- jeśli results/pm25/2024/exceedance_days.csv już istnieje i jego wejścia się nie zmieniły,
+to przy kolejnych uruchomieniach pipeline nie wykona reguły dla 2024,
+- analogicznie dla literatury: jeśli istnieje results/literature/2024/pubmed_papers.csv i config/zapytania się nie zmieniły,
+to nie pobieramy ponownie.
+
+Scenariusz działania (wprost wymagany do pokazania)
+1) Użytkownik ustawia:
+- years: [2021, 2024]
+Uruchamia:
+- snakemake -s Snakefile_task4 --cores 1
+Pipeline liczy:
+- PM2.5 dla 2021 i 2024
+- PubMed dla 2021 i 2024
+- raport dla {2021, 2024}
+
+2) Użytkownik zmienia config na:
+- years: [2019, 2024]
+Uruchamia ponownie tę samą komendę.
+Pipeline ma wykonać tylko brakujące kroki:
+- policzyć PM2.5 dla 2019 (2024 ma zostać pominięty),
+- pobrać/analitykę PubMed dla 2019 (2024 ma zostać pominięty),
+- wygenerować nowy raport dla {2019, 2024}.
+
+W README opisz krótko (2–4 zdania), jak to weryfikujesz:
+- np. po logach Snakemake (“Nothing to be done” dla 2024) lub przez porównanie czasu wykonania.
+
+Minimalne wymagania jakości
+README: “jak uruchomić Task 4” + opis scenariusza 1-2.
+co najmniej 1 test pytest (np. poprawne parsowanie roku z PubMedDate, lub normalizacja rekordu publikacji).
+kod pubmed_fetch.py ma działać deterministycznie na tym samym configu (te same wejścia - ten sam format wyjścia).
+pipeline tworzy osobne katalogi wyników per rok i nie nadpisuje wyników innych lat.
+Bonus (opcjonalnie)
+użycie --rerun-triggers checksum i krótka adnotacja w README, czym się różni od mtime,
+dodatkowa prosta analiza tytułów (top słowa) per rok i wykres porównawczy 2019 vs 2024.

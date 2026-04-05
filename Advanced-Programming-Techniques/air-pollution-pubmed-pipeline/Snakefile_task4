@@ -4,21 +4,21 @@ years = config["years"]
 
 rule all:
     input:
-        "results/report/raport_task4.md"
+        "results/report/report_task4.md"
 
-# Raport końcowy
+# Final report
 rule report_task4:
     input:
-        # expand stworzy listę plików dla wszystkich lat z configu
+        # expand will create a list of files for all years from the config
         pm25 = expand("results/pm25/{year}/exceedance_days.csv", year=years),
         lit = expand("results/literature/{year}/pubmed_papers.csv", year=years),
         conf = "config/task4.yaml"
     output:
-        rep = "results/report/raport_task4.md"
+        rep = "results/report/report_task4.md"
     script:
         "src/report/create_report.py"
 
-# Analiza przekroczeń i średnich dziennych
+# Analysis of exceedances and daily means
 rule pm25_year:
     output:
         exc = "results/pm25/{year}/exceedance_days.csv",
@@ -27,9 +27,9 @@ rule pm25_year:
         conf_path = "config/task4.yaml"
     retries: 3
     script:
-        "src/pm25/project3_main.py"
+        "src/pm25/air_pollution_main.py"
 
-# Artykułu z pubmedu
+# Pubmed articles
 rule pubmed_year:
     output:
         papers = "results/literature/{year}/pubmed_papers.csv",

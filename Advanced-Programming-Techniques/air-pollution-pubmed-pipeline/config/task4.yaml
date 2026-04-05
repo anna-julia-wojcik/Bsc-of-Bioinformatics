@@ -1,0 +1,7 @@
+years: [2019, 2021, 2024]
+cities: ["Warszawa", "Katowice"]
+
+pubmed:
+  query: "Particulate Matter"
+  email: "your_email@gmail.com"
+  max_results: 20
