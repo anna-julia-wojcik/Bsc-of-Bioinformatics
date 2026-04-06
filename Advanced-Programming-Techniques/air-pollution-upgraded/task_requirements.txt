@@ -1,0 +1,44 @@
+Mały projekt 3: Praca nad projektami
+Ten projekt przeznaczony jest dla dwóch grup dwuosobowych powiedzmy A i B. Najpierw w ramach współpracy w takich samych parach jak przy Małym Projekcie 1, każda grupa A i B, udoskonala własne rozwiązanie według poniższych wytycznych (1-6). Następnie, zadanie grupy A będzie polegało na rozszerzeniu rozwiązania Małego Projektu 1 wykonanego przez grupę B. I analogicznie, zadaniem grupy A będzie rewizja pull requestów wykonanych przez grupę C na rozwiązaniu Małego Projektu 1 grupy A. Najlepiej, aby części 7-8 miały kilka iteracji (patrz bonus).
+
+Część 1 (1.5 pkt)
+Przygotuj repozytorium i umieść w nim rozwiązanie Małego Projektu 1. Dalej pracuj już z git-em.
+
+Część 2 (3.5 pkt)
+Zmodyfikuj rozwiązanie Małego Projektu 1 do wersji projektowej, t.j. oddzielne pliki .py powinny obsługiwać części: wczytanie i czyszczenie danych, liczenie średnich i wskazywanie dni z przekroczeniem normy, wizualizacje. A następnie z funkcji zdefiniowanych w plikach .py powinien korzystać poprawiony plik notatnika .ipynb z rozwiązaniem Małego Projektu 1.
+
+Dodatkowo wprowadź zmiany do projektu: (1) uwzględnij najważniejsze uwagi wskazane w ocenie Małego Projektu 1; (2) przeanalizuj dane z godzinnych pomiarów stężeń drobnego pyłu PM2.5 tym razem w latach 2015, 2018, 2021 i 2024 (zamiast poprzednio analizowanych 2014, 2019 i 2024); (3) porównanie danych dla Warszawy i Katowic w zadaniu 2 należy zrobić dla lat 2015 i 2024; (4) zwróć uwagę na zmianę adresu pod którymi znajdują się metadane.
+
+Uwaga: Wszystkie powyższe modyfikacje powinny być widoczne w commit'ach przygotowanego repozytorium. Proszę zadbać również o sprawiedliwy podział pracy.
+
+Część 3 (2 pkt)
+Przygotuj testy z wykorzystaniem pytest.
+
+Część 4 (1 pkt)
+Przygotuj dokumentację.
+
+Część 5 (1 pkt)
+Zrób release-a.
+
+Część 6 (1.5 pkt)
+Skonfiguruj projekt tak, aby dodanie nowego kodu (commit) wykonywało testy (zob. zajęcia git 2 o CI).
+
+Cześć 7 (2.5 pkt)
+Zrób fork repozytorium projektu wyznaczonej grupy. Przygotuj kod, który wygeneruje wykres pokazujący liczbę dni z przekroczeniem normy stężenia PM2.5 (średnie dzienne stężenie) grupując dane po województwach. Dodaj opis i wyniki do notatnika jako zadanie 5. Zrób pull request-a do wyznaczonego repozytorium.
+
+Uwaga: Grupy nie powinny przydzielać sobie nawzajem prawa dostępu, ale traktować ten punkt jako wkład do istniejącego repozytorium open source (naelżącego do drugiej grupy), do którego nie mają praw.
+
+Część 8 (2 pkt)
+Dyskusja między grupami, rewizja kodu. Przykładowo, śląskie i małopolskie ma najwięcej stacji pomiarowych, więc nie mamy pewności, czy największe liczby przekroczeń nie wynikają z tego powodu. Warto zgłaszać uwagi do pull requesta, czekać na poprawki. Ta część może mieć wiele iteracji (zobacz też bonus) i wymagać odpowiednio więcej czasu. Ostatecznie można zaakceptować pull requesta, bądź nie.
+
+UWAGA
+Jest to projekt dla 6 osób: w interakcji biorą udział trzy dwuosobowe zespoły. Proszę spróbować przewidzieć różne sytuacje i stopień ustaleń między zespołami. Uczestnicy zajęć są z różnych lat i potencjalnie posiadają różne deadline-y, kolokwia, etc. Dlatego wykonanie pull-requesta nie oznacza natychmiastowej reakcji drugiej grupy, więc proszę tego nie robić tuż przed deadline-em.
+
+BONUS (sprawdzanie jakości peer review)
+Warto przyjrzeć się testom stowarzyszonej grupy i spróbować umieścić jakąś zmianę, którą powinni wykryć w procesie rewizji, a ich testy tego nie sprawdzają. Lub umieścić niespodziankę we własnym kodzie np. kolorowanie słupka dla województwa mazowieckiego na biało (nie będzie widocznych żadnych przekroczeń). O niewykrytej niespodziance proszę umieścić informacje w readme.md w dodatkowym commit'ie po upłynięciu terminu oddawania zadania.
+
+Punktacja części bonusowej (gra o stałej sumie):
+
++2 pkt za przemycenie niespodzianki
+-1 pkt za niezauważenie niespodzianki
++0.5 pkt dla każdej z grup jeśli niespodzianka została wykryta i np. stworzono nowy test
