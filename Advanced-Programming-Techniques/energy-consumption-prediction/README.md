@@ -2,12 +2,12 @@
 
 The project is a Jupyter Notebook-based analysis pipeline that integrates household energy consumption data with meteorological data to build and evaluate regression models for daily power usage forecasting. Two models are compared — linear regression and 2nd degree polynomial regression — with the better-performing model exposed via a FastAPI prediction endpoint.
 
+## Task description and requirements
+[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Advanced-Programming-Techniques/energy-consumption-prediction/task_requirements.txt)
+
 ## My Contribution
 
 I was responsible for Part 3 and Part 4, which involved designing and implementing the full model training pipeline, including the `split_train_test` function for time-series-aware data splitting, `linear_regression` and `polynomial_regression_degree_2` for training and evaluating both models, and `compare_results` for presenting the metrics side by side. I also built the FastAPI integration in Task 4, defining the `DailyFeatures` Pydantic schema, the `lifespan` context manager for model loading at startup, and the `predict_consumption` endpoint at `POST /predict_daily_consumption`.
-
-## Task description and requirements
-[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Advanced-Programming-Techniques/energy-consumption-prediction/task_requirements.txt)
 
 ## Project Stages
 
