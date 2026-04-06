@@ -33,7 +33,7 @@ Open and run the notebook cell by cell in order:
 jupyter notebook energy_consumption_prediction.ipynb
 ```
 
-Tasks 1 and 2 handle data acquisition and preprocessing. Tasks 3 and 4 handle model training and the API definition. All cells must be executed in sequence, as each task depends on the outputs of the previous one.
+Parts 1 and 2 handle data acquisition and preprocessing. Parts 3 and 4 handle model training and the API definition. All cells must be executed in sequence, as each task depends on the outputs of the previous one.
 
 ## Data Sources
 
@@ -46,7 +46,7 @@ No manual data download is required.
 
 # Task Descriptions
 
-## Task 1 — Data Loading and Merging
+## Part 1 — Data Loading and Merging
 
 ### Input:
 - Household Power Consumption dataset (CSV inside ZIP, semicolon-separated)
@@ -63,7 +63,7 @@ No manual data download is required.
 2. Fetches hourly weather data for the matching date range and sets `Datetime` as the index.
 3. Joins both DataFrames on the `Datetime` index into `df_combined`.
 
-## Task 2 — Cleaning and Daily Aggregation
+## Part 2 — Cleaning and Daily Aggregation
 
 ### Input:
 - `df_combined` — merged hourly DataFrame
@@ -79,7 +79,7 @@ No manual data download is required.
    - `mean` for voltage, intensity, temperature, and wind speed
 3. Drops any remaining `NaN` rows after resampling.
 
-## Task 3 — Model Training and Evaluation
+## Part 3 — Model Training and Evaluation
 
 ### Input:
 - `df_daily` — daily aggregated DataFrame
@@ -113,7 +113,7 @@ Prints MSE and R² for both models side by side.
 
 The polynomial regression model performs significantly better — it has a much lower MSE and explains nearly 5% more variance in the data.
 
-## Task 4 — FastAPI Prediction Endpoint
+## Part 4 — FastAPI Prediction Endpoint
 
 ### Input:
 - Saved model files: `linear_model.pkl`, `polynomial_model.pkl`, `polynomial_transformer.pkl`
