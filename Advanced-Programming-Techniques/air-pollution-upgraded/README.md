@@ -9,23 +9,14 @@ The project is a modular Python pipeline for processing and visualizing PM2.5 ai
 
 My specific responsibility covered the visualization and exceedance analysis modules. I implemented `heatmap.py` in full — `prepare_heatmap_data` for reshaping the merged dataset into long format and `create_heatmap` for rendering the per-city monthly PM2.5 heatmap panel. I also implemented `grouped_barplot.py`, including `calculate_daily_means`, `calculate_exceedance_days`, `top3_exceedances`, `create_grouped_barplot`, `calculate_voivodeship_exceedances`, and `create_voivodeship_exceedances_barplot` (Task 5 — the voivodeship-level extension). I wrote the corresponding test files `test_heatmap.py` and `test_grouped_barplot.py`.
 
-## Project Structure
+## Project Stages
 
-```
-.
-├── src/
-│   ├── air_pollution_analysis.ipynb     # Main notebook orchestrating the full analysis
-│   ├── data_preprocessing.py            # Data downloading, cleaning, and merging
-│   ├── station_yearly_means.py          # Monthly averages and line chart
-│   ├── heatmap.py                       # Heatmap visualization
-│   └── grouped_barplot.py               # Exceedance days analysis and bar charts
-├── tests/
-│   ├── test_data_preprocessing.py       # Tests for data_preprocessing.py
-│   ├── test_station_yearly_means.py     # Tests for station_yearly_means.py
-│   ├── test_heatmap.py                  # Tests for heatmap.py
-│   └── test_grouped_barplot.py          # Tests for grouped_barplot.py
-└── requirements.txt                     # Python dependencies
-```
+- Downloading PM2.5 hourly measurement archives for 2015, 2018, 2021, and 2024 from the GIOŚ API.
+- Fetching station metadata to standardize legacy codes and assign geographic locations to the data.
+- Cleaning, filtering, and merging the yearly datasets into a single, unified Excel file.
+- Computing monthly averages and plotting line charts to compare PM2.5 trends across selected cities.
+- Generating a panel of heatmaps to visualize monthly PM2.5 levels for each city across all analyzed years.
+- Counting exceedance days over the 15 µg/m³ threshold and creating bar charts to compare the best/worst stations and voivodeship averages.
 
 ## Installation and Requirements
 
