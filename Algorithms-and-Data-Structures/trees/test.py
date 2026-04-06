@@ -1,6 +1,6 @@
 from zad1 import RegBinTree, RegBinNode, Leaf
 
-# Przykład z treści zadania:
+# Example from the task description:
 #
 #          A(B)
 #         /    \
@@ -17,53 +17,53 @@ C = RegBinNode('W', F, G)
 A = RegBinNode('B', B, C)
 tree = RegBinTree(A)
 
-print("Drzewo:")
+print("Tree:")
 print(tree)
 
 # Test compute_alt_path_lengths
 tree.compute_alt_path_lengths()
 
-print("Po compute_alt_path_lengths:")
+print("After compute_alt_path_lengths:")
 print(tree)
 
-assert D.alt_length == 0, f"D.alt_length = {D.alt_length}, oczekiwano 0"
-assert E.alt_length == 0, f"E.alt_length = {E.alt_length}, oczekiwano 0"
-assert F.alt_length == 0, f"F.alt_length = {F.alt_length}, oczekiwano 0"
-assert G.alt_length == 0, f"G.alt_length = {G.alt_length}, oczekiwano 0"
-assert B.alt_length == 1, f"B.alt_length = {B.alt_length}, oczekiwano 1"
-assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, oczekiwano 1"
-assert A.alt_length == 2, f"A.alt_length = {A.alt_length}, oczekiwano 2"
+assert D.alt_length == 0, f"D.alt_length = {D.alt_length}, expected 0"
+assert E.alt_length == 0, f"E.alt_length = {E.alt_length}, expected 0"
+assert F.alt_length == 0, f"F.alt_length = {F.alt_length}, expected 0"
+assert G.alt_length == 0, f"G.alt_length = {G.alt_length}, expected 0"
+assert B.alt_length == 1, f"B.alt_length = {B.alt_length}, expected 1"
+assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, expected 1"
+assert A.alt_length == 2, f"A.alt_length = {A.alt_length}, expected 2"
 print("compute_alt_path_lengths: OK!\n")
 
 # Test find_longest_alt_path
 path = tree.find_longest_alt_path()
 path_colors = [v.color for v in path]
 
-print(f"Najdłuższa naprzemienna ścieżka od korzenia: {path_colors}")
-print(f"Długość (krawędzie): {len(path) - 1}")
+print(f"Longest alternating path from root: {path_colors}")
+print(f"Length (edges): {len(path) - 1}")
 
-assert len(path) == 3, f"Oczekiwano ścieżki długości 2 (3 wierzchołki), dostano {len(path) - 1} ({len(path)} wierzchołków)"
-assert path[0] is A, "Ścieżka powinna zaczynać się od korzenia A(B)"
-assert path[1] is B, "Drugi wierzchołek powinien to B(W)"
-assert path[2] is D, "Trzeci wierzchołek powinien to D(B)"
+assert len(path) == 3, f"Expected path of length 2 (3 vertices), got {len(path) - 1} ({len(path)} vertices)"
+assert path[0] is A, "Path should start at root A(B)"
+assert path[1] is B, "Second vertex should be B(W)"
+assert path[2] is D, "Third vertex should be D(B)"
 print("find_longest_alt_path: OK!")
 
-# ── Test 1: drzewo z samego liścia ──────────────────────────────────────────
-print("Test 1: drzewo z samego liścia")
+# ── Test 1: tree consisting of a single leaf ─────────────────────────────────
+print("Test 1: tree with a single leaf")
 
 A = Leaf('B')
 tree = RegBinTree(A)
 tree.compute_alt_path_lengths()
 
-assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, oczekiwano 0"
+assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, expected 0"
 
 path = tree.find_longest_alt_path()
-assert len(path) == 1, f"Oczekiwano 1 wierzchołka, dostano {len(path)}"
-assert path[0] is A, "Ścieżka powinna zawierać tylko liść A"
+assert len(path) == 1, f"Expected 1 vertex, got {len(path)}"
+assert path[0] is A, "Path should contain only leaf A"
 print("Test 1: OK!\n")
 
-# ── Test 2: drzewo z korzeniem i dwoma liśćmi, brak naprzemienności ─────────
-print("Test 2: korzeń i dwa liście tego samego koloru")
+# ── Test 2: tree with root and two leaves of the same color ──────────────────
+print("Test 2: root and two leaves of the same color")
 #
 #   A(B)
 #  /    \
@@ -77,15 +77,15 @@ tree.compute_alt_path_lengths()
 
 assert B.alt_length == 0
 assert C.alt_length == 0
-assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, oczekiwano 0"
+assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, expected 0"
 
 path = tree.find_longest_alt_path()
-assert len(path) == 1, f"Oczekiwano 1 wierzchołka, dostano {len(path)}"
+assert len(path) == 1, f"Expected 1 vertex, got {len(path)}"
 assert path[0] is A
 print("Test 2: OK!\n")
 
-# ── Test 3: prawa gałąź dłuższa niż lewa ────────────────────────────────────
-print("Test 3: prawa gałąź dłuższa")
+# ── Test 3: right branch longer than left ────────────────────────────────────
+print("Test 3: right branch longer")
 #
 #      A(B)
 #     /    \
@@ -104,18 +104,18 @@ tree.compute_alt_path_lengths()
 assert B.alt_length == 0
 assert D.alt_length == 0
 assert E.alt_length == 0
-assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, oczekiwano 1"
-assert A.alt_length == 2, f"A.alt_length = {A.alt_length}, oczekiwano 2"
+assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, expected 1"
+assert A.alt_length == 2, f"A.alt_length = {A.alt_length}, expected 2"
 
 path = tree.find_longest_alt_path()
-assert len(path) == 3, f"Oczekiwano 3 wierzchołków, dostano {len(path)}"
+assert len(path) == 3, f"Expected 3 vertices, got {len(path)}"
 assert path[0] is A
 assert path[1] is C
-assert path[2] is D or path[2] is E  # lewe dziecko preferred przy równości
+assert path[2] is D or path[2] is E  # left child preferred on tie
 print("Test 3: OK!\n")
 
-# ── Test 4: długa naprzemienna ścieżka po lewej stronie ─────────────────────
-print("Test 4: długa naprzemienna ścieżka w lewo")
+# ── Test 4: long alternating path going left ─────────────────────────────────
+print("Test 4: long alternating path going left")
 #
 #         A(B)
 #        /
@@ -133,20 +133,20 @@ tree = RegBinTree(A)
 tree.compute_alt_path_lengths()
 
 assert D.alt_length == 0
-assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, oczekiwano 1"
-assert B.alt_length == 2, f"B.alt_length = {B.alt_length}, oczekiwano 2"
-assert A.alt_length == 3, f"A.alt_length = {A.alt_length}, oczekiwano 3"
+assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, expected 1"
+assert B.alt_length == 2, f"B.alt_length = {B.alt_length}, expected 2"
+assert A.alt_length == 3, f"A.alt_length = {A.alt_length}, expected 3"
 
 path = tree.find_longest_alt_path()
-assert len(path) == 4, f"Oczekiwano 4 wierzchołków, dostano {len(path)}"
+assert len(path) == 4, f"Expected 4 vertices, got {len(path)}"
 assert path[0] is A
 assert path[1] is B
 assert path[2] is C
 assert path[3] is D
 print("Test 4: OK!\n")
 
-# ── Test 5: remis między lewą a prawą — preferujemy lewe dziecko ────────────
-print("Test 5: remis alt_length lewego i prawego dziecka")
+# ── Test 5: tie between left and right — left child preferred ─────────────────
+print("Test 5: tie between alt_length of left and right child")
 #
 #        A(B)
 #       /    \
@@ -167,14 +167,14 @@ assert C.alt_length == 1
 assert A.alt_length == 2
 
 path = tree.find_longest_alt_path()
-assert len(path) == 3, f"Oczekiwano 3 wierzchołków, dostano {len(path)}"
+assert len(path) == 3, f"Expected 3 vertices, got {len(path)}"
 assert path[0] is A
-assert path[1] is B  # lewe dziecko preferowane przy równości
+assert path[1] is B  # left child preferred on tie
 assert path[2] is D
 print("Test 5: OK!\n")
 
-# ── Test 6: wszystkie węzły naprzemienne ────────────────────────────────────
-print("Test 6: idealna naprzemienność")
+# ── Test 6: all nodes perfectly alternating ───────────────────────────────────
+print("Test 6: perfect alternation")
 #
 #        A(B)
 #       /    \
@@ -197,13 +197,13 @@ assert C.alt_length == 0
 assert A.alt_length == 2
 
 path = tree.find_longest_alt_path()
-assert len(path) == 3, f"Oczekiwano 3 wierzchołków, dostano {len(path)}"
+assert len(path) == 3, f"Expected 3 vertices, got {len(path)}"
 assert path[0] is A
 assert path[1] is B
 assert path[2] is D
 print("Test 6: OK!\n")
 
-# ── Test 7: wszystkie węzły naprzemienne ────────────────────────────────────
+# ── Test 7: mixed alternation ─────────────────────────────────────────────────
 print("Test 7: Wera")
 #          A(B)
 #         /    \
@@ -222,47 +222,47 @@ t11 = RegBinTree(A)
 
 t11.compute_alt_path_lengths()
 
-# Liście
-assert D.alt_length == 0, f"D.alt_length = {D.alt_length}, oczekiwano 0"
-assert E.alt_length == 0, f"E.alt_length = {E.alt_length}, oczekiwano 0"
-assert F.alt_length == 0, f"F.alt_length = {F.alt_length}, oczekiwano 0"
-assert G.alt_length == 0, f"G.alt_length = {G.alt_length}, oczekiwano 0"
+# Leaves
+assert D.alt_length == 0, f"D.alt_length = {D.alt_length}, expected 0"
+assert E.alt_length == 0, f"E.alt_length = {E.alt_length}, expected 0"
+assert F.alt_length == 0, f"F.alt_length = {F.alt_length}, expected 0"
+assert G.alt_length == 0, f"G.alt_length = {G.alt_length}, expected 0"
 
-# Węzły wewnętrzne
-assert B.alt_length == 1, f"B.alt_length = {B.alt_length}, oczekiwano 1"  # D(W) i E(W) != B(B)
-assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, oczekiwano 1"  # F(B) i G(B) != C(W)
-assert A.alt_length == 2, f"A.alt_length = {A.alt_length}, oczekiwano 2"  # B(B)==A(B) odpada, C(W)!=A(B) → 1+1=2
+# Internal nodes
+assert B.alt_length == 1, f"B.alt_length = {B.alt_length}, expected 1"  # D(W) and E(W) != B(B)
+assert C.alt_length == 1, f"C.alt_length = {C.alt_length}, expected 1"  # F(B) and G(B) != C(W)
+assert A.alt_length == 2, f"A.alt_length = {A.alt_length}, expected 2"  # B(B)==A(B) rejected, C(W)!=A(B) → 1+1=2
 
 print("compute_alt_path_lengths: OK!")
 
-# Ścieżka: A(B) → C(W) → F(B)  [lewe dziecko preferowane przy remisie F/G]
+# Path: A(B) → C(W) → F(B)  [left child preferred on tie between F/G]
 path = t11.find_longest_alt_path()
 path_colors = [v.color for v in path]
 
-print(f"Najdłuższa naprzemienna ścieżka: {path_colors}")
-print(f"Długość (krawędzie): {len(path) - 1}")
+print(f"Longest alternating path: {path_colors}")
+print(f"Length (edges): {len(path) - 1}")
 
-assert len(path) == 3, f"Oczekiwano 3 wierzchołków, dostano {len(path)}"
-assert path[0] is A, "Ścieżka powinna zaczynać się od A(B)"
-assert path[1] is C, "Drugi wierzchołek powinien być C(W)"
-assert path[2] is F, "Trzeci wierzchołek powinien być F(B) (lewe dziecko preferowane)"
+assert len(path) == 3, f"Expected 3 vertices, got {len(path)}"
+assert path[0] is A, "Path should start at A(B)"
+assert path[1] is C, "Second vertex should be C(W)"
+assert path[2] is F, "Third vertex should be F(B) (left child preferred)"
 
 print("find_longest_alt_path: OK!")
 
-# ── Test 8: pojedynczy liść ────────────────────────────────────
+# ── Test 8: single leaf ───────────────────────────────────────────────────────
 A = Leaf('B')
 tree = RegBinTree(A)
 tree.compute_alt_path_lengths()
 
-assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, oczekiwano 0"
+assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, expected 0"
 
 path = tree.find_longest_alt_path()
-assert len(path) == 1, f"Oczekiwano 1 wierzchołka, dostano {len(path)}"
-assert path[0] is A, "Ścieżka powinna zawierać tylko liść A"
+assert len(path) == 1, f"Expected 1 vertex, got {len(path)}"
+assert path[0] is A, "Path should contain only leaf A"
 
-print("Test pojedynczego liścia: OK!")
+print("Single leaf test: OK!")
 
-# ── Test 9: pojedynczy liść ────────────────────────────────────
+# ── Test 9: single leaf ───────────────────────────────────────────────────────
 B = Leaf('B')
 C = Leaf('B')
 A = RegBinNode('B', B, C)
@@ -274,16 +274,16 @@ A = RegBinNode('B', B, C)
 t2 = RegBinTree(A)
 t2.compute_alt_path_lengths()
 
-assert B.alt_length == 0, f"B.alt_length = {B.alt_length}, oczekiwano 0"
-assert C.alt_length == 0, f"C.alt_length = {C.alt_length}, oczekiwano 0"
-assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, oczekiwano 0"
+assert B.alt_length == 0, f"B.alt_length = {B.alt_length}, expected 0"
+assert C.alt_length == 0, f"C.alt_length = {C.alt_length}, expected 0"
+assert A.alt_length == 0, f"A.alt_length = {A.alt_length}, expected 0"
 
 print("compute_alt_path_lengths: OK!")
 
 path = t2.find_longest_alt_path()
-assert len(path) == 0, f"Oczekiwano 1 wierzchołka, dostano {len(path)}"
-assert path[0] is [], "Ścieżka powinna zawierać tylko korzeń A"
+assert len(path) == 0, f"Expected 1 vertex, got {len(path)}"
+assert path[0] is [], "Path should contain only root A"
 
 print("find_longest_alt_path: OK!")
 
-print("Wszystkie testy przeszły pomyślnie!")
+print("All tests passed successfully!")
