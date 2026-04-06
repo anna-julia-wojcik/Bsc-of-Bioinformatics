@@ -16,10 +16,11 @@ I was responsible for Part 3 and Part 4, which involved designing and implementi
 
 ## Installation and Requirements
 
-The project requires Python ≥ 3.8. Install all dependencies with:
+The project requires Python ≥ 3.8. All dependencies are listed in `requirements.txt`.
+Install using the command:
 
 ```bash
-pip install pandas requests scikit-learn joblib fastapi pydantic uvicorn
+pip install -r requirements.txt
 ```
 
 # Running the Notebook
