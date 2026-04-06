@@ -1,0 +1,30 @@
+Mały projekt zaliczeniowy 2
+Korzystając z historycznych danych pogodowych udostępnianych przez Open-Meteo Historical Data API
+(hAps://open-meteo.com/) oraz danych dotyczących zużycia energii w domu jednorodzinnym w
+miejscowości Sceaux (7 km od Paryża), dostępnych w UCI Machine Learning Repository (link do
+repozytorium danych poniżej), należy wykonać następujące zadania.
+1. Pobranie danych
+• Pobrać dane dotyczące zużycia energii z UCI.
+• Dobrać i pobrać dopasowane historyczne dane pogodowe z Open-Meteo dla lokalizacji
+Sceaux.
+• Połączyć dane energetyczne z pogodowymi według daty i czasu.
+2. Przygotowanie danych i inżynieria cech
+• Wybrać odpowiednie zmienne niezależne pochodzące z danych pogodowych, np.
+temperatura, wilgotność, opady, prędkość wiatru oraz inne dostępne zmienne
+meteorologiczne, itp.
+• Wykonać czyszczenie danych, ujednolicenie dat oraz usunięcie brakujących danych.
+• Dokonać uśrednienia danych, aby przedstawiały średnie dzienne zużycie energii.
+• Podzielić dane na dwa podzbiory: treningowy i testowy (walidacyjny).
+3. Trenowanie modeli
+• Wytrenować dwa modele regresyjne, które prognozują średnie dzienne zużycie energii:
+o regresja liniowa,
+o regresja wielomianowa (np. 2-go lub 3-go stopnia).
+• Porównać dokładność obu modeli na zbiorze testowym.
+4. Udostępnienie modelu przez FastAPI
+• Utworzyć serwer FastAPI udostępniający endpoint, który przyjmuje cechy pogodowe dla
+miejscowości Sceaux i zwraca prognozę dziennego zużycia energii dla domu jednorodzinnego
+przez oba wytrenowane modele.
+Linki do danych:
+• Open-Meteo Historical Data API url: hAps://archive-api.open-meteo.com/v1/archive
+• Individual Household Electric Power Consump]on:
+hAps://archive.ics.uci.edu/dataset/235/individual+household+electric+power+consumption
