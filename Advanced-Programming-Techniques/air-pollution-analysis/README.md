@@ -6,6 +6,9 @@ The project is a Jupyter Notebook-based analysis pipeline for processing and vis
 
 I was responsible for Part 3 and Part 4, which involved implementing `prepare_heatmap_data` for reshaping the merged dataset into long format suitable for visualization, and `create_heatmap` for rendering a panel of per-city monthly PM2.5 heatmaps using Matplotlib. In Part 4, I wrote `count_exceedance_days` to calculate the number of days per year exceeding the WHO threshold of 15 µg/m³, `top3_exceedances` to identify the three cleanest and three most polluted stations, and `create_grouped_barplot` to display the results as a grouped bar chart.
 
+## Task description and requirements
+[Task description (polish)](https://github.com/anna-julia-wojcik/Bsc-of-Bioinformatics/blob/main/Advanced-Programming-Techniques/air-pollution-analysis/task_requirements.txt)
+
 ## Project Stages
 
 - Downloading and extracting PM2.5 hourly measurement data for 2014, 2019, and 2024 from the GIOŚ archive.
